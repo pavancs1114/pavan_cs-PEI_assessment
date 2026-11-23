@@ -1,2 +1,6 @@
-# pavan_cs-PEI_assessment
-Creating a repo for PEI assessment tasks
+# pavan_cs-Data_Engineering-Assessment
+PEI Group
+
+## Prerequisite:
+### Databricks
+* Databricks Free Edition
