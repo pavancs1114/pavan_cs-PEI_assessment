@@ -21,7 +21,7 @@ PEI Group
    - Perform data type casting and schema validation.
 
 3. **Read Customer Data (XLSX)**
-   - Read Excel data using `openpyxl`.
+   - Read Excel data using '**openpyxl**'.
    - Perform data type casting and schema validation.
 
 4. **Read Product Data (CSV)**
@@ -52,3 +52,5 @@ PEI Group
    - Profit by Year and Product Category.
    - Profit by Customer.
    - Profit by Customer and Year.
+
+## Overview on the workflow:
