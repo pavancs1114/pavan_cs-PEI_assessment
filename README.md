@@ -54,3 +54,4 @@ PEI Group
    - Profit by Customer and Year.
 
 ## Overview on the workflow:
+![Workflow](https://github.com/pavancs1114/pavan_cs-PEI_assessment/blob/f44c1f7a74bb9254e5f317778bdf5e1ed06487ae/workflow_diagram.png)
