@@ -11,47 +11,63 @@ PEI Group
 
     %pip install openpyxl==3.1.5
 
+
 ## Project Flow
 
 1. **Import Required Packages**
-   - Import Python and PySpark libraries.
+   - Import Python, PySpark and openpyxl libraries.
+   - Configure catalog, schemas and source file paths.
 
 2. **Read Order Data (JSON)**
-   - Format price and numeric values.
-   - Perform data type casting and schema validation.
+   - Standardize column names and validate the expected schema.
+   - Perform data type casting for numeric and date columns.
+   - Validate source data.
 
 3. **Read Customer Data (XLSX)**
-   - Read Excel data using '**openpyxl**'.
-   - Perform data type casting and schema validation.
+   - Read Excel data using 'openpyxl'.
+   - Standardize column names and validate the expected schema.
+   - Validate source data.
 
 4. **Read Product Data (CSV)**
-   - Perform data type casting and schema validation.
+   - Standardize column names and validate the expected schema.
+   - Cast product price to the required data type.
+   - Validate source data.
 
 5. **Create Bronze Delta Tables**
-   - Save Orders, Customers, and Products DataFrames as Delta tables.
-   - Execute unit tests to validate the Bronze tables.
+   - Save Orders, Customers and Products DataFrames as Delta tables.
+   - Execute unit tests to validate table existence, schemas, data types and record counts.
 
 6. **Perform Data Quality Checks**
    - Identify duplicate and null identifiers.
-   - Validate phone numbers and postal codes.
-   - Identify unmatched customer and product references.
-   - Display data quality findings without modifying source records.
+   - Identify missing important attributes.
+   - Validate email addresses, phone numbers and postal codes.
+   - Identify duplicate order lines and unmatched customer/product references.
+   - Display data quality findings without modifying Bronze source records.
 
-7. **Create Enriched Silver Tables**
+7. **Perform Customer Data Preprocessing**
+   - Normalize customer names, email addresses and phone numbers.
+   - Normalize and validate postal codes.
+   - Handle invalid values by setting them to NULL.
+
+8. **Create Enriched Silver Tables**
    - Create the enriched Customer and Product table.
    - Create the enriched Order table with customer and product details.
    - Calculate Profit rounded to two decimal places.
-   - Execute unit tests to validate the enriched tables.
+   - Execute unit tests to validate enriched tables.
 
-8. **Create Profit Aggregation**
-   - Aggregate profit by Year, Product Category, Product Subcategory, and Customer.
-   - Save the results as a Delta table.
+9. **Create Profit Aggregation**
+   - Join the required Bronze source tables.
+   - Aggregate profit by Year, Product Category, Product Subcategory and Customer.
+   - Save the results as a Silver Delta table.
+   - Validate the aggregation results.
 
-9. **Execute Spark SQL Queries**
-   - Profit by Year.
-   - Profit by Year and Product Category.
-   - Profit by Customer.
-   - Profit by Customer and Year.
+10. **Execute Spark SQL Queries**
+    - Profit by Year.
+    - Profit by Year and Product Category.
+    - Profit by Customer.
+    - Profit by Customer and Year.
+    - Validate SQL aggregation outputs.
+
 
 ## Overview on the workflow:
-![Workflow](https://github.com/pavancs1114/pavan_cs-PEI_assessment/blob/f44c1f7a74bb9254e5f317778bdf5e1ed06487ae/workflow_diagram.png)
+![Workflow](https://github.com/pavancs1114/pavan_cs-PEI_assessment/blob/f5cffa741198e509ed78079862d3ac3f6732fbe8/workflow_diagram.png)
